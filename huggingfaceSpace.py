@@ -4,7 +4,7 @@ import pandas as pd
 import urllib.parse
 import re
 
-# Load the trained model
+# Loads the trained model
 model = joblib.load("randomForestIsItPhishing2.pkl")
 
 # Full feature list (87 features)
@@ -36,8 +36,7 @@ FEATURES = [
     "page_rank"
 ]
 
-# Feature extraction function
-def extract_features_from_url(url):
+def extractFeaturesFromUrl(url):
     """
     Extracts all 87 features from a given URL.
     """
@@ -95,7 +94,7 @@ def predict_url(url):
     Predicts if a URL is phishing or legitimate.
     """
     # Extract features
-    features_df = extract_features_from_url(url)
+    features_df = extractFeaturesFromUrl(url)
     
     # Make prediction
     prediction = model.predict(features_df)
