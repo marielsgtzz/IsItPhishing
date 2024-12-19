@@ -44,12 +44,10 @@ def extract_features_from_url(url):
     if not url.startswith(("http://", "https://")):
         url = "http://" + url
     
-    # Parse URL
     parsed_url = urllib.parse.urlparse(url)
     netloc = parsed_url.netloc
     path = parsed_url.path
 
-    # Calculate features
     features = {
         "length_url": len(url),
         "length_hostname": len(netloc),
@@ -82,7 +80,6 @@ def extract_features_from_url(url):
         "port": 1 if ":" in netloc else 0,
         "nb_subdomains": netloc.count('.'),
         "prefix_suffix": 1 if "-" in netloc else 0,
-        # Other features with default values
     }
 
     # Fill missing features with 0
